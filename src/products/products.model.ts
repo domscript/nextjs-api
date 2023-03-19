@@ -5,6 +5,8 @@ export const ProductSchema = new mongoose.Schema({
   description: { type: String, required: true },
   price: { type: Number, required: true },
   url: { type: String, required: true },
+  mass: { type: Number, required: true },
+  date: { type: Date, required: true },
 });
 export interface Product extends mongoose.Document {
   id: string;
@@ -12,4 +14,6 @@ export interface Product extends mongoose.Document {
   description: string;
   price: number;
   url: string;
+  mass: number;
+  date: Date;
 }

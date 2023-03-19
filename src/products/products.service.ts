@@ -17,15 +17,18 @@ export class ProductsService {
     description: string,
     price: number,
     url: string,
+    mass: number,
+    date: Date,
   ) {
     const newProduct = new this.productModel({
       title,
       description,
       price,
       url,
+      mass,
+      date,
     });
     const result = await newProduct.save();
-    console.log(result._id);
     return result._id;
   }
 
@@ -37,6 +40,8 @@ export class ProductsService {
       description: product.description,
       price: product.price,
       url: product.url,
+      mass: product.mass,
+      date: product.date,
     })) as Product[];
   }
 
@@ -48,6 +53,8 @@ export class ProductsService {
       description: product.description,
       price: product.price,
       url: product.url,
+      mass: product.mass,
+      date: product.date,
     } as Product;
   }
 
@@ -57,12 +64,16 @@ export class ProductsService {
     description: string,
     price: number,
     url: string,
+    mass: number,
+    date: Date,
   ) {
     const updatedProduct = await this.findProduct(prodId);
     if (title) updatedProduct.title = title;
     if (description) updatedProduct.description = description;
     if (price) updatedProduct.price = price;
     if (url) updatedProduct.url = url;
+    if (mass) updatedProduct.mass = mass;
+    if (date) updatedProduct.date = date;
     updatedProduct.save();
   }
 
